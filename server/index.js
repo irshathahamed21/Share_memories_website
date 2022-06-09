@@ -2,19 +2,19 @@ import express from "express"
 import bodyParser from "body-parser"
 import mongoose from "mongoose"
 import cors from "cors"
+import postRoutes from "./routes/posts.js"
+import dotenv from "dotenv"
 
 const app = express()
-
-const postRoutes = require("./routes/posts")
+dotenv.config()
 
 app.use(bodyParser.json({limit:"30mb", extended:true}))
 app.use(bodyParser.urlencoded({limit:"30mb", extended:true}))
 app.use(cors())
 
-
 app.use("/posts", postRoutes)
 
-const CONNECTION_URL = "mongodb://Irshath:ahamed@cluster0-shard-00-00.iwmdb.mongodb.net:27017,cluster0-shard-00-01.iwmdb.mongodb.net:27017,cluster0-shard-00-02.iwmdb.mongodb.net:27017/?ssl=true&replicaSet=atlas-7frgbf-shard-0&authSource=admin&retryWrites=true&w=majority"
+const CONNECTION_URL = process.env.MONGO_URL
 const PORT = process.env.PORT || 5000
 
 
