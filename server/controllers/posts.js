@@ -1,7 +1,7 @@
 import express from "express"
 import mongoose from "mongoose"
 
-import PostMessage from "../models/posts";
+import PostMessage from "../models/posts.js";
 
 const router = express.Router()
 
@@ -55,5 +55,7 @@ export const createPost = async(req,res) => {
         res.status(404).json({ message: error.message });
     }
 }
+
+export default router
 
 
