@@ -7,7 +7,7 @@ export const getPosts = () => async(dispatch) =>  {
         const {data} = await api.fetchPosts()
 
         dispatch({
-            type:"FETCH_ALL",
+            type:FETCH_ALL,
             payload:data
         })
 
@@ -21,7 +21,7 @@ export const createPost = (post) => async(dispatch) =>  {
         const {data} = await api.createPost(post)
 
         dispatch({
-            type:"CREATE",
+            type:CREATE,
             payload:data
         })
 
@@ -36,7 +36,7 @@ export const updatePost = (id, post) => async(dispatch) => {
         const {data} = await api.updatePost(id, post)
 
         dispatch({
-            type:"UPDATE_POST",
+            type:UPDATE,
             payload:data
         })
     } catch (error) {
@@ -49,7 +49,7 @@ export const deletePost = (id) => async(dispatch) => {
     try {
          await api.deletePost(id)
         dispatch({
-            type:"DELETE_POST",
+            type:DELETE,
             payload:id
         })
     } catch (error) {
@@ -63,7 +63,7 @@ export const likePost = (id) => async(dispatch) => {
     try {
         const {data} = await api.likePost(id)
         dispatch({
-            type:"LIKE_POST",
+            type:LIKE,
             payload:data
         })
     } catch (error) {
