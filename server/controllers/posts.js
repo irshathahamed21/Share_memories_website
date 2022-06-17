@@ -56,7 +56,7 @@ export const createPost = async(req,res) => {
     }
 }
 
-export default router
+
 
 export const updatePost = async(req,res) => {
 
@@ -99,8 +99,9 @@ export const likePost = async(req,res) => {
     const post = await PostMessage.findById(id)
     const updatedPost = await PostMessage.findByIdAndUpdate(id, {likeCount:post.likeCount +1}, {new:true})
 
-    res.json(updatePost)
+    res.json(updatedPost)
 }
 
 
 
+export default router
